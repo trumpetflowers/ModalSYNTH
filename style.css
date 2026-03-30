@@ -1,0 +1,269 @@
+/* ════════════════════════════════════════
+   MODAL SYNTH – PRO UI SYSTEM
+   Version: 1.0 (Plugin-Level Styling)
+   ════════════════════════════════════════ */
+
+/* ───────── ROOT DESIGN SYSTEM ───────── */
+:root {
+
+  /* Core Colors */
+  --bg-main: #08080f;
+  --bg-panel: #0f0f1a;
+  --border-main: #252540;
+
+  /* Accent Systems */
+  --accent-exc: #e8760a;
+  --accent-core: #00d4aa;
+  --accent-fx: #aa66ff;
+  --accent-mod: #44cc44;
+  --accent-seq: #bb66ff;
+  --accent-perf: #5599ff;
+
+  /* Text */
+  --text-main: #ccd0e0;
+  --text-dim: #44507a;
+  --text-bright: #ffffff;
+
+  /* Fonts */
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-ui: 'Barlow Condensed', sans-serif;
+
+  /* Glow */
+  --glow-core: 0 0 12px rgba(0,212,170,0.4);
+  --glow-exc: 0 0 12px rgba(232,118,10,0.4);
+}
+
+/* ───────── GLOBAL RESET ───────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-ui);
+  overflow: hidden;
+}
+
+/* ───────── APP LAYOUT ───────── */
+#app {
+  display: grid;
+  grid-template-rows: 50px 1fr auto auto;
+  gap: 4px;
+  padding: 6px;
+
+  background:
+    radial-gradient(circle at 50% 20%, #001820, transparent 60%),
+    var(--bg-main);
+}
+
+/* ───────── HEADER ───────── */
+#hdr {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+
+  background: linear-gradient(90deg, #10102a, #0a0a1a);
+}
+
+#hdr-logo {
+  font-family: var(--font-mono);
+  letter-spacing: 4px;
+  color: var(--accent-core);
+  text-shadow: var(--glow-core);
+}
+
+/* ───────── PANEL SYSTEM ───────── */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid #202040;
+  border-radius: 6px;
+
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  transition: 0.2s;
+}
+
+.panel:hover {
+  border-color: #404080;
+}
+
+/* Panel Header */
+.ph {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid #303050;
+}
+
+/* ───────── EXCITER STYLE ───────── */
+.exciter {
+  border-color: #7a3800;
+}
+
+.exciter .ph {
+  color: var(--accent-exc);
+}
+
+/* Buttons */
+.exc-btn {
+  background: #2a1200;
+  border: 1px solid #7a3800;
+
+  color: #aa6030;
+  font-family: var(--font-mono);
+  font-size: 10px;
+
+  padding: 6px;
+  border-radius: 4px;
+
+  transition: 0.15s;
+}
+
+.exc-btn:hover {
+  color: var(--accent-exc);
+  border-color: var(--accent-exc);
+  box-shadow: var(--glow-exc);
+}
+
+.exc-btn.active {
+  background: #3a1600;
+  color: var(--accent-exc);
+  box-shadow: var(--glow-exc);
+}
+
+/* ───────── RESONATOR CORE ───────── */
+.core {
+  border-color: #00584a;
+}
+
+.core .ph {
+  color: var(--accent-core);
+}
+
+.res-btn {
+  background: #001a1a;
+  border: 1px solid #003830;
+  color: #338870;
+
+  font-size: 9px;
+  padding: 5px;
+  border-radius: 3px;
+
+  transition: 0.15s;
+}
+
+.res-btn:hover {
+  color: var(--accent-core);
+}
+
+.res-btn.active {
+  color: var(--accent-core);
+  box-shadow: var(--glow-core);
+}
+
+/* ───────── SLIDERS (PRO LOOK) ───────── */
+input[type=range] {
+  -webkit-appearance: none;
+  height: 4px;
+  background: #1a1a30;
+  border-radius: 2px;
+}
+
+/* Thumb */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+  background: var(--text-main);
+
+  border: 2px solid #000;
+}
+
+/* Accent variants */
+input.exc::-webkit-slider-thumb { background: var(--accent-exc); }
+input.core::-webkit-slider-thumb { background: var(--accent-core); }
+input.fx::-webkit-slider-thumb { background: var(--accent-fx); }
+input.mod::-webkit-slider-thumb { background: var(--accent-mod); }
+
+/* ───────── EFFECTS ───────── */
+.fx .ph {
+  color: var(--accent-fx);
+}
+
+/* ───────── MODULATION ───────── */
+.mod .ph {
+  color: var(--accent-mod);
+}
+
+/* ───────── SEQUENCER ───────── */
+.seq .ph {
+  color: var(--accent-seq);
+}
+
+.step-btn {
+  background: #180828;
+  border: 2px solid #2a0850;
+
+  font-size: 10px;
+  padding: 6px;
+}
+
+.step-btn.on {
+  border-color: var(--accent-seq);
+}
+
+.step-btn.current {
+  background: #3a0a80;
+  box-shadow: 0 0 12px rgba(187,102,255,0.6);
+}
+
+/* ───────── PERFORMANCE ───────── */
+.perf .ph {
+  color: var(--accent-perf);
+}
+
+/* ───────── KEYBOARD ───────── */
+.wk {
+  background: linear-gradient(#e8e8f0, #d0d0e0);
+}
+
+.wk.lit {
+  background: var(--accent-core);
+  box-shadow: var(--glow-core);
+}
+
+.bk.lit {
+  background: var(--accent-exc);
+  box-shadow: var(--glow-exc);
+}
+
+/* ───────── MICRO INTERACTIONS ───────── */
+button {
+  cursor: pointer;
+  transition: 0.12s;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* ───────── SCROLLBAR ───────── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #303060;
+}
